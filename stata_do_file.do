@@ -63,3 +63,19 @@ reg milk cows labor land cows_labor, nocons
 xi: reg milk cows labor land cows_labor i.year, nocons
 xtreg milk cows labor land cows_labor i.year, fe
 
+
+reg milk cows labor_r land, nocons
+xi: reg milk cows labor_r land i.year, nocons
+xtreg milk cows labor_r land i.year, fe
+
+
+
+gen milk_per_cow = milk/cows
+gen feed_per_cow = feed/cows
+
+reg milk_per_cow labor land feed_per_cow, nocons
+xi: reg milk_per_cow labor land feed_per_cow i.year, nocons
+xtset farm year
+xtreg milk_per_cow labor land feed_per_cow i.year, fe
+
+
